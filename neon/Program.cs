@@ -23,13 +23,13 @@ namespace Neo.Compiler
             var log = new DefLogger();
             log.Log("Neo.Compiler.MSIL console app v" + Assembly.GetEntryAssembly().GetName().Version);
 
-            bool bCompatible = false;
+            bool bCompatible = true;
             string filename = null;
             for (var i = 0; i < args.Length; i++)
             {
                 if (args[i][0] == '-')
                 {
-                    if (args[i] == "--compatible")
+                    if (args[i] == "--no-compatible")
                     {
                         bCompatible = true;
                     }
@@ -45,13 +45,13 @@ namespace Neo.Compiler
             if (filename == null)
             {
                 log.Log("need one param for DLL filename.");
-                log.Log("[--compatible] disable nep8 function");
+                log.Log("[--no-compatible] enable nep8 function");
                 log.Log("Example:neon abc.dll --compatible");
                 return;
             }
-            if (bCompatible)
+            if (!bCompatible)
             {
-                log.Log("use --compatible no nep8");
+                log.Log("use --no-compatible, nep8 enabled");
             }
             string onlyname = System.IO.Path.GetFileNameWithoutExtension(filename);
             string filepdb = onlyname + ".pdb";

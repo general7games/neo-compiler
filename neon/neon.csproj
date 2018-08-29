@@ -30,7 +30,12 @@
 
   <ItemGroup>
     <PackageReference Include="AntShares.MonoCecil" Version="1.0.0" />
-    <PackageReference Include="Neo.VM" Version="2.3.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Neo.VM">
+      <HintPath>..\ont-dep\Neo.VM.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
 </Project>
